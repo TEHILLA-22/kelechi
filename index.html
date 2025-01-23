@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kelechi's Birthday</title>
+    <link rel="stylesheet" href="02style.css" />
+    <link rel="icon" href="favicon.png" type="image/png" />
+
+  </head>
+  <body>
+    <div class="head">
+      <header class="head">
+        <h1>Happy birhday Dear Kelechi❤️</h1>
+
+        <div class="navigation">
+          <nav>
+            <a href="#">home</a>
+            <a href="#">about</a>
+            <a href="#">contact</a>
+            <a href="#">Gallery</a>
+          </nav>
+        </div>
+        <span class="animate" style="--i: 1"></span>
+      </header>
+    </div>
+
+    <div class="container">
+      <div class="wrapper">
+        <div class="welcome">
+          <h1>A Memorable Day</h1>
+          <p>
+            Happy Birthday to You <span>Kelechi❤️</span> as you move on to
+            another phase of life. A Beautiful young girl who has shown her potentials in diverse areas.
+          </p>
+          <a href="#form" class="btn-learn">View more</a>
+        </div>
+
+        <div class="login">
+          <div class="card">
+            <div class="form active" id="loginForm">
+              <h2>Log in</h2>
+              <div class="input-group">
+                <label for="name">Username</label>
+                <input
+                  type="email"
+                  id="name"
+                  placeholder="email: birthdaykel@gmail.com"
+                  class="user"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="password">password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="password: 123"
+                  class="pass"
+                  required
+                />
+              </div>
+              <button
+                class="btn-submit"
+                type="submit"
+                onclick="
+                 var email = document.getElementById('name').value;
+                                var password = document.getElementById('password').value;
+                                if (email == 'birthdaykel@gmail.com' && password == '123') {
+                                window.location.assign('02index.html')
+                                console.log('login successful')
+                                alert('login successfully')
+                                }  
+                                else {
+                                  console.log('invalid information')
+                                  alert('invalid information')
+                                  return('void');
+                                }
+              
+                " >
+                Log in
+              </button>
+
+           
+
+
+            
+
+            <div class="social">
+              <span class="divider">or login with</span>
+
+              <div class="social-btns">
+                <button class="btn-google">
+                  <div
+                    id="g_id_onload"
+                    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                    data-login_uri="https://your-backend-server.com/google-login"
+                    data-auto_prompt="false"
+                  ></div>
+                  <div class="g_id_signin" data-type="standard"></div>
+                </button>
+
+                <button class="btn-facebook" onclick="signupWithFacebook()">
+                  <img src="facebook.png" alt="" />
+                  Facebook
+                </button>
+              </div>
+            </div>
+
+          </div>
+
+            <span class="signup">
+              Dont have an account?
+              <button id="toggleButton">Switch to Sign Up</button>
+            </span>
+          </div>
+        </div>
+
+    
+
+
+
+
+
+
+
+        <div class="login">
+          <div class="card">
+            <div class="form" id="signupForm">
+              <h2>signup</h2>
+
+              <div class="input-group">
+                <label for="name">First name</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="First name"
+                  class="user"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="name">Last name</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="last name"
+                  class="user"
+                  required
+                />
+              </div>
+
+
+
+              <div class="input-group">
+                <label for="name">Username</label>
+                <input
+                  type="text"
+                  id="name"
+                  placeholder="username"
+                  class="user"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="name">Email</label>
+                <input
+                  type="email"
+                  id="name"
+                  placeholder="email: birthdaykel@gmail.com"
+                  class="user"
+                  required
+                />
+              </div>
+
+              <div class="input-group">
+                <label for="password">password</label>
+                <input
+                  type="password"
+                  id="password"
+                  placeholder="password: 123"
+                  class="pass"
+                  required
+                />
+              </div>
+              <button
+                class="btn-submit"
+                type="submit">
+               signup
+              </button>
+
+            
+
+
+            
+
+            <div class="social">
+              <span class="divider">or login with</span>
+
+              <div class="social-btns">
+                <button class="btn-google">
+                  <div
+                    id="g_id_onload"
+                    data-client_id="YOUR_GOOGLE_CLIENT_ID"
+                    data-login_uri="https://your-backend-server.com/google-login"
+                    data-auto_prompt="false"
+                  ></div>
+                  <div class="g_id_signin" data-type="standard"></div>
+                </button>
+
+                <button class="btn-facebook" onclick="signupWithFacebook()">
+                  <img src="facebook.png" alt="" />
+                  Facebook
+                </button>
+              </div>
+            </div>
+
+            <span class="signup">
+              Already have an account?
+              <a href="#" onclick="showLoginForm()">Login</a>
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+
+        
+     
+
+
+      </div>
+
+    </div>
+
+    <div class="foot">
+      <footer class="foot">
+        <h3>
+          Created By <span>King Of Programming Tehilla</span> &copy; 2025 All
+          right reserved
+        </h3>
+      </footer>
+    </div>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+      window.fbAsyncInit = function () {
+        FB.init({
+          appId: "YOUR_APP_ID",
+          cookie: true,
+          xfbml: true,
+          version: "v12.0",
+        });
+      };
+
+      function signupWithFacebook() {
+        FB.login(
+          function (response) {
+            if (response.authResponse) {
+              console.log("Logged in:", response);
+              // Send response.authResponse.accessToken to your server
+            } else {
+              console.log("User cancelled login or did not fully authorize.");
+            }
+          },
+          { scope: "email" }
+        );
+      }
+    </script>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+    <script
+      async
+      defer
+      crossorigin="anonymous"
+      src="https://connect.facebook.net/en_US/sdk.js"
+    ></script>
+
+    <script src="script.js"></script>
+  </body>
+</html>

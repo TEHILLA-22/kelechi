@@ -1,0 +1,1306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kelechi's Birthday</title>
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Times New Roman', Times, serif;
+    } 
+
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      scroll-padding-top: 9rem;
+  }
+
+  ::-webkit-scrollbar{
+    width: .7rem;
+}
+
+::-webkit-scrollbar-track{
+     background: blue;
+}
+
+::-webkit-scrollbar-thumb{
+    background: lime;
+}
+
+    body {
+      background:rgb(236, 149, 236)
+    }
+   
+     header {
+        text-align: center;
+        background: linear-gradient(purple, red);
+        color: bisque;
+        text-decoration: none;
+        /* position: fixed; */
+        width: 100%;
+    }
+
+    .head h1 img {
+      width: 3%;
+      height: 25px;
+    }
+    @media(max-width:750px) {
+      .head h1 img {
+        width: 5%;
+        height: 25px;
+      }
+    }
+
+    .animate {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 100%;
+      height: 8.5%;
+      background: linear-gradient(purple, red);
+       animation: show-right 4s ease-out forwards;
+       animation-delay: calc(2s * var(--i));
+  }
+
+  .slider-container {
+   overflow: hidden;
+    border-radius: 20px;
+    
+  }
+  
+  .m1{position:fixed;left:0.5%; width:auto;height:100%;top:1%;color:#000;}
+.m2{position:fixed;right:0.5%; width:auto;height:100%;top:1%;color:#000;}
+
+
+
+.slider {
+    display: flex;
+    transition: transform 1.5s ease-in-out;
+}
+
+.slide {
+    min-width: 100%;
+    height: 20%;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 10px;
+}
+
+.slide img {
+    width: 200%;
+    height: 500px;
+    max-width: 1300px;
+    object-fit: contain;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+}
+
+
+.text-content {
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 200px;
+    border-radius: 20px;
+   
+    text-align: center;
+    animation: fadeIn 2s ease;
+    box-shadow: 0 200px 20px rgba(0, 0, 0, 0.2);
+}
+
+.highlight {
+    color: #FF6347;
+    font-weight: bold;
+    animation: bounce 1s infinite;
+}
+
+.final {
+    font-size: 2rem;
+    color: #FF6347;
+    display: flex;
+    animation: pulse 2s infinite;
+}
+.finaly span {
+  width: 150px;
+  display: flex;
+  font-size: 1rem;
+}
+
+.final-message {
+    font-size: 2.5rem;
+    color: #333;
+    margin-top: 15px;
+    animation: zoomIn 2s;
+}
+@media (max-width:750px) {
+  .final  {
+    width: 30px;
+    font-size: 1.5rem;
+    display: flex;
+    text-align: center;
+  }
+}
+
+.heart {
+    color: #FF6347;
+    animation: heartBeat 1s infinite;
+}
+
+/* Keyframes and Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.3);
+    }
+}
+
+@media (max-width: 768px) {
+    .slider-container {
+        height: 500px;
+    }
+
+    .text-content h2 {
+        font-size: 3rem;
+    }
+
+    .text-content p {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 760px) {
+    .slide img {
+        width: 90%;
+        object-fit: contain;
+        height: 100%;
+       
+    }
+
+
+
+     .slide {
+        width: 30%;
+        height: 10%;
+        overflow: hidden;
+        object-fit: contain;
+    } 
+
+    .slide.active img {
+      width: 50%;
+      height: 200%;
+      overflow: hidden;
+      object-fit: contain;
+  } 
+    
+}
+   
+  .controls {
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    transform: translateY(-50%);
+  }
+  
+  .controls button {
+    background: #d63384;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: background 0.3s;
+  }
+  
+  .controls button:hover {
+    background: #ff99c8;
+    color: #d63384;
+  }
+  
+  .indicators {
+    overflow: hidden;
+    position: absolute;
+    bottom: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 8px;
+  }
+  
+  .indicators span {
+    width: 15px;
+    height: 15px;
+    background: #ff99c8;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+  
+  .indicators span.active {
+    background: #d63384;
+  }
+  
+  /* Responsive Design */
+  @media (max-width: 768px) {
+    .slider-container {
+      height: 850px;
+    }
+
+    .controls button {
+      width: 40px;
+      height: 40px;
+      font-size: 1.2rem;
+    }
+  }
+
+  @keyframes show-right {
+    100% {
+        width: 0;
+    }
+}
+
+@keyframes fade-in {
+    100% {
+      opacity: 0;
+    }
+}
+
+.play button {
+  width: 30%;
+  cursor: pointer;
+  background: #FF1493;
+  border: 3px solid #f3148f;
+  animation: bounce 2s;
+}
+.play button:hover {
+  scale: 1.1;
+  background: #FF6347;
+  transition: 1s ease-in-out;
+}
+
+.video {
+  display: flex;
+  flex-wrap: wrap;
+    gap: 1.5rem;
+}
+ 
+.video .vid video {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+.video .vid {
+  overflow: hidden;
+    box-shadow: 0 1rem 2rem rgba(0, 0, 0, .1);
+    border: .5rem solid #fff;
+    border-radius: .5rem;
+    flex: 1 1 30rem;
+    width: 12rem;
+    height: 25rem;
+    position: relative;
+}
+
+.video .vid .content {
+  position: absolute;
+    top: 100;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+    background: rgba(0, 0, 0, .7);
+    padding: 2rem;
+    padding-top: 5rem;
+}
+
+.video .vid:hover .content {
+  top: 0;
+  touch-action: pinch-zoom;
+}
+.video .vid .content h3 {
+  font-size: 2.5rem;
+  color: #FF1493;
+}
+.video .vid .content p {
+  color: #fff;
+    top: 100%; left: 0;
+    font-size: 1.5rem;
+    transform: translateY(-12%);
+
+}
+.video .vid .content span {
+  color: #e70f0f;
+  font-size: 2rem;
+}
+
+.videp h2 {
+  font-size: 3rem;
+  color: #f3148f;
+  text-align: center;
+  transform: translateY(70%);
+  font-style: italic;
+}
+.videp P {
+  font-size: 2rem;
+  line-height: 1.1;
+  color: #FF1493;
+  font-style: oblique;
+}
+@media(max-width:750px) {
+    .videp h2 {
+      transform: translateY(-320%);
+    }
+    .videp p {
+      transform: translateY(-100%);
+    }
+}
+
+p {
+  display: block;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  unicode-bidi: isolate;
+  font-stretch: semi-expanded;
+}
+
+.countdown-container {
+  text-align: center;
+  margin: 20px;
+}
+
+.countdown {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  font-size: 1.5rem;
+  color: #d63384;
+}
+
+.countdown div {
+  background-color: #ffe4e1;
+  padding: 10px 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+@media(max-width:750px) {
+  .countdown {
+    display: inline-flex;
+    overflow: hidden;
+  }
+
+}
+
+.message-gallery {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.messages {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 15px;
+}
+
+.message {
+  padding: 20px;
+  background-color: #fff8dc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-size: 1rem;
+  text-align: left;
+}
+
+.message span {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+  color: #d63384;
+}
+
+.button {
+  background-color: #ff61a6;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+  color: #fff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.button:hover {
+  background-color: #ff5252;
+  transform: scale(1.05);
+}
+
+input, .button {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+input:focus {
+  outline: none;
+  border: 2px solid #ff61a6;
+}
+
+/* Messages Section */
+.messagess {
+  margin: 20px;
+  padding: 30px;
+  background: #fff;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.section-title {
+  font-size: 2rem;
+  color: #ff6f61;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 20px;
+}
+
+.message-list {
+  list-style: none;
+  padding: 0;
+}
+
+.message-list li {
+  font-size: 1.2rem;
+  padding: 10px;
+  background: #ffecf3;
+  margin: 10px 0;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.message-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+ul {
+  color: #F80980;
+}
+
+@keyframes scroll {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-2000px); }
+}
+
+.live-stream {
+  text-align: center;
+  margin: 30px 0;
+}
+
+.live-stream iframe {
+  width: 80%;
+  height: 400px;
+  border-radius: 10px;
+}
+
+.wish-to-action {
+  text-align: center;
+  margin: 30px auto;
+  padding: 20px;
+  background: linear-gradient(to bottom, #ffe4e1, #ffccf2);
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  max-width: 500px;
+}
+
+.wish-to-action h2 {
+  font-family: 'Cursive', sans-serif;
+  color: #d63384;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+}
+
+#wish-input {
+  width: 80%;
+  padding: 10px 15px;
+  border: 2px solid #d63384;
+  border-radius: 10px;
+  font-size: 1rem;
+  margin-bottom: 15px;
+  outline: none;
+  transition: 0.3s;
+}
+
+#wish-input:focus {
+  border-color: #ff99c8;
+  box-shadow: 0 0 10px rgba(255, 153, 200, 0.8);
+}
+
+.wish-to-action button {
+  background-color: #d63384;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 20px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button:hover {
+  background-color: #ff99c8;
+  transform: scale(1.05);
+}
+
+.wish-output {
+  margin-top: 20px;
+  padding: 15px;
+  font-size: 1.2rem;
+  font-family: 'Cursive', sans-serif;
+  color: #6b0f1a;
+  background: #fff8dc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+#fireworks-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  height: 80vh;
+  pointer-events: none;
+}
+
+#fireworks-btn buttons {
+  width: 100%;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  header {
+      padding: 20px;
+  }
+
+  
+
+  .button {
+      padding: 10px 20px;
+  }
+
+  .messages, .gift {
+      margin: 15px;
+      padding: 20px;
+  }
+
+  .message-form {
+      flex-direction: column;
+      align-items: center;
+  }
+
+  input, .button {
+      width: 100%;
+  }
+}
+
+
+.mainContainer {
+  background: linear-gradient(red, pink, violet, pink, tomato);
+  max-width: 450px;
+  min-height: 170px;
+  margin: 0 auto;
+  text-align: center;
+  padding: 15px;
+  color: #999;
+  padding-bottom: 60px;
+
+  box-shadow: 0 0 10px 1px rgba(0,0,0,.14), 0 1px 14px 2px rgba(0,0,0,.12), 0 0 5px -3px rgba(0,0,0,.3);
+  background-size: 100%;
+}
+
+#username {
+  background: url(sname.png);
+  color: black;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: swing 4s infinite;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  font-size: 35px;
+  padding: 0 10px;
+}
+
+
+.wishMessage {
+  color: #fff;
+  width: 90%;
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 20px;
+  text-shadow: 0px 0px 10px #afafaf;
+}
+.wishMessage p{
+  margin: 0.3em 0;
+}
+@keyframes bounceIn{0%,20%,40%,60%,80%,to{-webkit-animation-timing-function:cubic-bezier(.215,.61,.355,1);animation-timing-function:cubic-bezier(.215,.61,.355,1)}0%{opacity:0;-webkit-transform:scale3d(.3,.3,.3);transform:scale3d(.3,.3,.3)}20%{-webkit-transform:scale3d(1.1,1.1,1.1);transform:scale3d(1.1,1.1,1.1); color:#FF9933;}40%{-webkit-transform:scale3d(.9,.9,.9);transform:scale3d(.9,.9,.9)}60%{opacity:1;-webkit-transform:scale3d(1.03,1.03,1.03);transform:scale3d(1.03,1.03,1.03); color: #fff;}80%{-webkit-transform:scale3d(.97,.97,.97);transform:scale3d(.97,.97,.97);}to{opacity:1;-webkit-transform:scaleX(1);transform:scaleX(1)}}
+.demo {
+  font-size: 11; font-weight: none;color: #98201f;
+  animation: flash 0s infinite;
+}
+
+.footer footer {
+  width: 100%;
+  background: linear-gradient(tomato, indigo);
+  padding: .5px;
+  font-size: 1.5rem;
+  text-align: center;
+  color: #ddd
+
+}
+@media (max-width:750px) {
+  .footer footer {
+    font-size: 1rem;
+  }
+}
+
+
+
+    </style>
+</head>
+<body>
+    <div class="head">
+        <header class="head">
+          <audio src="kelechi.mp3" id="song" loop autoplay></audio>
+          <h1> <img src="p1.png" alt=""> Happy birhday Sis Kel❤️</h1>
+  
+        <div class="play">
+          <button  id="playImage">🎵 Play Music</button>
+        </div>
+          <span class="animate" style="--i: 1"></span>
+        </header>
+      </div>
+
+      <!-- start home section -->
+
+      <div class="slider-container">
+        <div class="slider">
+          <!-- Slide 1: T - Tender -->
+          <div class="slide" style="background-color: #ffc1e3;">
+              <img src="kelechi (1).jpg" alt="Tulip Image 1">
+              <div class="text-content">
+                  <h3><span class="highlight">K</span> - Kind hearted</h3>
+                 
+              </div>
+          </div>
+          
+  
+          <!-- Slide 2: U - Unstoppable -->
+          <div class="slide" style="background-color: #ffcfe2;">
+              <img src="kelechi (2).jpg" alt="Tulip Image 2">
+              <div class="text-content">
+                  <h3><span class="highlight">E</span> - Elegant</h3>
+              </div>
+          </div>
+  
+          <!-- Slide 3: L - Lovely -->
+          <div class="slide" style="background-color: #FF1493;">
+              <img src="kelechi (3).jpg" alt="Tulip Image 3">
+              <div class="text-content">
+                  <h3><span class="highlight">L</span> - Loving</h3>
+              
+              </div>
+          </div>
+  
+          <!-- Slide 4: I - Irreplaceable -->
+          <div class="slide" style="background-color: red;">
+              <img src="kelechi (4).jpg" alt="Tulip Image 4">
+              <div class="text-content">
+                  <h3><span class="highlight">E</span> - Encouraging</h3>
+                 
+              </div>
+          </div>
+  
+          <!-- Slide 5: P - Precious -->
+          <div class="slide" style="background-color: #C71585;">
+              <img src="kelechi (5).jpg" alt="Tulip Image 5">
+              <div class="text-content">
+                  <h3><span class="highlight">C</span> - Charismatic</h3>
+  
+              </div>
+          </div>
+
+           <!-- Slide 5: P - Precious -->
+           <div class="slide" style="background-color: #C71585;">
+            <img src="kelechi (6).jpg" alt="Tulip Image 5">
+            <div class="text-content">
+                <h3><span class="highlight">H</span> - Humble</h3>
+
+            </div>
+        </div>
+
+          <!-- Slide 5: P - Precious -->
+          <div class="slide" style="background-color: #C71585;">
+            <img src="kelechi (7).jpg" alt="Tulip Image 5">
+            <div class="text-content">
+                <h3><span class="highlight">I</span> - Independent</h3>
+
+            </div>
+        </div>
+  
+          <!-- Final Slide: TULIP + Tehilla -->
+          <div class="slide" style="background-color: #FF6347;">
+              <img src="kelechi (8).jpg" alt="Tulip Image 6">
+              <div class="text-content">
+                  <h3 class="final">
+                      <span class="heart">❤️</span> Kelechi <span class="heart">❤️</span>
+                  </h3>
+                 
+              </div>
+          </div>
+
+          <div class="slide active" style="background-color: #FF6347;">
+            <img src="bro pic 3.jpg" alt="Tulip Image 6" width="100px" height="100px">
+            <div class="text-content">
+                <h3 class="finaly">
+                    <span class="heart">❤️</span>Made specially by your Bro's<span class="heart">❤️</span>
+                </h3>
+               
+            </div>
+        </div>
+
+      </div>
+        </div>
+        <div class="controls">
+          <button id="prev">❮</button>
+          
+          <button id="next">❯</button>
+        </div>
+      </div>
+      <div class="indicators">
+        <!-- Circle indicators for slides -->
+      </div>
+
+      <!-- start marquee section -->
+      <marquee class="m1" behavior="scroll" direction="up" scrolldelay="0"> <br>
+        <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+        <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+        <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+        </marquee>
+        <marquee class="m2" behavior="scroll" direction="down" scrolldelay="0"> <br>
+            <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+        <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+        <img src="p1.png" height="20px" width="20px" /><br><br>
+        <img src="p2.png" height="20px" width="20px" /><br><br>
+        <img src="p3.png" height="20px" width="20px" /><br><br>
+        <img src="p4.png" height="20px" width="20px" /><br><br>
+        <img src="p5.png" height="20px" width="20px" /><br><br>
+        <img src="m6.png" height="20px" width="20px" /><br><br>
+        <img src="p6.png" height="20px" width="20px" /><br><br>
+        <img src="p7.png" height="20px" width="20px" /><br><br>
+            </marquee>
+    
+      <!-- end marquee section -->
+
+      <!-- start video album section  -->
+       <section class="videp">
+      <h2>Video Album</h2>
+      <p>An album filled with never ending memeories. Lets Dive into some amazing activities carried out by our special celebrant <span>KELECHI.</span></p>
+       <div class="video">
+       
+
+        <div class="vid">
+          <video src="vid1.mp4" loop autoplay muted></video>
+          <div class="content">
+            <h3>A Day Filled With Joy</h3>
+            <p>Have a blissful Birthday as you calebrate with never ending joy <span id="bliss">and Laughter</span></p>
+           
+          </div>
+        </div>
+
+        <div class="vid">
+          <video src="vid2.mp4" loop autoplay muted></video>
+          <div class="content">
+            <h3>Happy Birthday</h3>
+            <p>Happy Birthday and many more years Ahead, as you progress into the next stage of life</p>
+          </div>
+        </div>
+
+        <div class="vid">
+          <video src="vid3.mp4" loop autoplay muted></video>
+          <div class="content">
+            <h3>Time To Create Memories</h3>
+            <p>Create Wonderful memeories as you celebrate with the people you cherish and those who cherish you as well</p>
+          </div>
+        </div>
+
+       </div>
+
+      </section>
+      <!-- end video album section  -->
+
+      <!-- start countdown -->
+      <div class="countdown-container">
+        <h2>Countdown to the Special Day!</h2>
+        <div class="countdown">
+          <div><span id="hours">00</span>Hours</div>
+          <div><span id="minutes">00</span>Minutes</div>
+          <div><span id="seconds">00</span>Seconds</div>
+        </div>
+      </div>
+      <!-- end countdown -->
+
+      <!-- start main section -->
+      <div class="mainContainer" id="mainContainer">
+        <center>
+        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script>
+          window.googletag = window.googletag || {cmd: []};
+          googletag.cmd.push(function() {
+            googletag.defineSlot('/22727637014/ca-pub-1309182164428906-tag/50', [300, 50], 'div-gpt-ad-1673413053650-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+        </script>
+        <!-- /22727637014/ca-pub-1309182164428906-tag/50 -->
+        <div id='div-gpt-ad-1673413053650-0' style='min-width: 300px; min-height: 50px;'>
+          <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1673413053650-0'); });
+          </script>
+        </div>
+        </center>
+        <br>
+        <h1 id="username" style="font-family:SF Espresso Shack;">KELECHI</h1>
+                <h3 class="fromMessage" id="fromMessage"></h3><br>
+        
+        <img src="wishkn.png" width="50%" height="auto" style="animation: tada 4s infinite;"/><br><br>
+        <div style="font-size: 18px; font-weight: 800; color:blue;">
+        <p id="demo"></p>
+        </div>
+        <br>
+        
+        <br><br>
+        <div class="w3-content w3-section" style="max-width:500px">
+        <img src="birthday.jpeg" width="80%" height="auto" style="animation: tada 4s infinite;"/>
+        </div></center>
+        
+        <center>
+        <div class="wishMessage" style="text-shadow: 1px 1px 3px white, 1px 1px 3px white, -1px -1px 3px white, -1px -1px 3px white;">
+        <p style="text-shadow: 1px 1px 3px black, 1px 1px 3px black, -1px -1px 3px black, -1px -1px 3px black;color:red">
+        🎄Sending you my warm wishes
+        </p>
+        <span style="text-shadow: 1px 1px 3px silver, 1px 1px 3px silver, -1px -1px 3px silver, -1px -1px 3px silver;color:blue">
+          May your bIRTHDAY sparkle with laughter, love, 
+          and warmth.🎁
+        </p>
+        <span style="text-shadow: 1px 1px 3px silver, 1px 1px 3px silver, -1px -1px 3px silver, -1px -1px 3px silver;color:#F80980">
+        🔔Thank you for being the beautiful Tulip 
+        in my life, making every moment feel like a Christmas Special.
+        </p>
+        <span style="text-shadow: 1px 1px 3px silver, 1px 1px 3px silver, -1px -1px 3px silver, -1px -1px 3px silver;color:#096B12">
+        Have a Wonderful
+        </p><br>
+        <span style="text-shadow: 1px 1px 3px black, 1px 1px 3px black, -1px -1px 3px black, -1px -1px 3px black;color:#ffff00">
+        Birthday
+<p>from</p>
+        <h1 id="usernameb" style="font-family:SF Espresso Shack;">Tehilla
+            <br>to<br> Kelechi
+        </h1>
+
+        </p><br>
+        </div>
+        </center>
+        
+        <center>
+        <script async src="https://securepubads.g.doubleclick.net/tag/js/gpt.js"></script>
+        <script>
+          window.googletag = window.googletag || {cmd: []};
+          googletag.cmd.push(function() {
+            googletag.defineSlot('/22727637014/ca-pub-1309182164428906-tag/50ad1', [300, 50], 'div-gpt-ad-1673413135972-0').addService(googletag.pubads());
+            googletag.pubads().enableSingleRequest();
+            googletag.enableServices();
+          });
+        </script>
+        <!-- /22727637014/ca-pub-1309182164428906-tag/50ad1 -->
+        <div id='div-gpt-ad-1673413135972-0' style='min-width: 300px; min-height: 50px;'>
+          <script>
+            googletag.cmd.push(function() { googletag.display('div-gpt-ad-1673413135972-0'); });
+          </script>
+        </div>
+        </center>
+        <br>
+        </div>
+      <!-- end main section -->
+
+      <!-- start mesage section  -->
+      <div class="message-gallery">
+        <h2>Birthday Wishes</h2>
+        <div class="messages">
+          <div class="message">
+            <p>"Happy Birthday! You're the best!"</p>
+            <span>- Tehilla</span>
+          </div>
+          <div class="message">
+            <p>"Wishing you a year full of love and happiness!"</p>
+            <span>- Princewill</span>
+          </div>
+        </div>
+      </div>
+
+     
+      <!-- end message section -->
+
+      <!-- Heartfelt Messages Section -->
+      <section class="messagess">
+        <h2 class="section-title">Heartfelt Messages</h2>
+        <ul id="message-list" class="message-list">
+         
+        </ul>
+        <form id="message-form" class="message-form">
+            <input type="text" id="new-message" placeholder="Add your message" required class="input-message">
+            <button type="submit" class="button">Add Message</button>
+        </form>
+    </section>
+
+
+    <div class="live-stream">
+      <h2>Join the Live Party!</h2>
+      <iframe src="https://www.youtube.com/embed/live_stream?channel=YOUR_CHANNEL_ID"
+              frameborder="0"
+              allowfullscreen></iframe>
+    </div>
+
+
+
+    <div class="wish-to-action">
+      <h2>Make Your Wish Come True</h2>
+      <input type="text" id="wish-input" placeholder="Type your wish here...">
+      <button onclick="generateWish()">✨ Make a Wish</button>
+      <div id="wish-display" class="wish-output"></div>
+    </div>
+
+    <button id="fireworks-btn" class="button fireworks-btn">Click for Fireworks!</button>
+    <canvas id="fireworks-canvas"></canvas>
+
+
+    <!-- start footer section -->
+     <div class="footer">
+      <footer class="foot">
+        <p>Made with love from <span>King of Programming Tehilla</span>&copy; 2025 || All right reserved</p>
+      </footer>
+     </div>
+    <!-- end footer section -->
+
+<audio src="kelechi.mp3" loop autoplay></audio>
+
+
+  <script>
+    const slides = document.querySelectorAll('.slide');
+const prevButton = document.getElementById('prev');
+const nextButton = document.getElementById('next');
+const indicatorsContainer = document.querySelector('.indicators');
+let currentIndex = 0;
+
+// Generate circle indicators
+slides.forEach((_, index) => {
+  const indicator = document.createElement('span');
+  if (index === 0) indicator.classList.add('active');
+  indicator.addEventListener('click', () => goToSlide(index));
+  indicatorsContainer.appendChild(indicator);
+});
+
+const indicators = document.querySelectorAll('.indicators span');
+
+function updateIndicators() {
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentIndex);
+  });
+}
+
+function goToSlide(index) {
+  currentIndex = index;
+  document.querySelector('.slider').style.transform = `translateX(-${currentIndex * 100}%)`;
+  updateIndicators();
+}
+
+function nextSlide() {
+  currentIndex = (currentIndex + 1) % slides.length;
+  goToSlide(currentIndex);
+}
+
+function prevSlide() {
+  currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+  goToSlide(currentIndex);
+}
+
+prevButton.addEventListener('click', prevSlide);
+nextButton.addEventListener('click', nextSlide);
+
+// Auto-slide every 5 seconds
+setInterval(nextSlide, 5000);
+
+
+
+
+const countdown = () => {
+  const targetDate = new Date("2025-01-23T00:00:00").getTime();
+  const now = new Date().getTime();
+  const gap = targetDate - now;
+
+  const days = Math.floor(gap / (1000 * 60 * 60 * 24));
+  const hours = Math.floor((gap % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  const minutes = Math.floor((gap % (1000 * 60 * 60)) / (1000 * 60));
+  const seconds = Math.floor((gap % (1000 * 60)) / 1000);
+
+
+  document.getElementById("hours").innerText = hours;
+  document.getElementById("minutes").innerText = minutes;
+  document.getElementById("seconds").innerText = seconds;
+};
+
+setInterval(countdown, 1000);
+
+// Heartfelt Messages Section - Add New Messages
+const messageForm = document.getElementById("message-form");
+const messageList = document.getElementById("message-list");
+
+// Load pre-existing messages from localStorage, or initialize with an empty array
+const messages = JSON.parse(localStorage.getItem("messages")) || [
+    "Happy Birthday to the most amazing Younger sister in the world! ❤️",
+    "Have a nice day Celebrating Kel! 🎉"
+];
+
+// Function to display the messages in the list
+function displayMessages() {
+    messageList.innerHTML = ""; // Clear the list
+    messages.forEach(message => {
+        const li = document.createElement("li");
+        li.textContent = message;
+        messageList.appendChild(li);
+    });
+}
+
+// Display messages on page load
+displayMessages();
+
+// Add new message to the list and store it in localStorage
+messageForm.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const newMessage = document.getElementById("new-message").value;
+
+    if (newMessage.trim() !== "") {
+        messages.push(newMessage); // Add the new message to the array
+        localStorage.setItem("messages", JSON.stringify(messages)); // Save the updated list to localStorage
+        displayMessages(); // Re-render the message list
+    }
+
+    // Reset the form
+    messageForm.reset();
+});
+
+const generateWish = () => {
+  const wishInput = document.getElementById("wish-input");
+  const wishDisplay = document.getElementById("wish-display");
+
+  const wish = wishInput.value.trim();
+
+  if (wish) {
+    // Generate a personalized message
+    const message = `🌟 Your special wish: "${wish}" is now floating into the universe! 💖`;
+   
+    // Display the wish with an animation
+    wishDisplay.textContent = message;
+    wishDisplay.style.opacity = '0';
+    wishDisplay.style.animation = 'none'; // Reset animation
+
+    setTimeout(() => {
+      wishDisplay.style.animation = 'fadeIn 0.8s ease-out forwards';
+    }, 10);
+
+    // Clear input field
+    wishInput.value = '';
+  } else {
+    // Alert if no wish is entered
+    alert("Please type your wish first! 🎂");
+  }
+};
+
+
+// Fireworks Animation - Trigger Fireworks on Button Click
+const fireworksCanvas = document.getElementById("fireworks-canvas");
+const ctx = fireworksCanvas.getContext("2d");
+
+fireworksCanvas.width = window.innerWidth;
+fireworksCanvas.height = window.innerHeight;
+
+const fireworks = [];
+
+// Create Firework Class
+function Firework(x, y) {
+    this.x = x;
+    this.y = y;
+    this.color = `hsl(${Math.random() * 360}, 100%, 40%)`;
+    this.radius = Math.random() * 5 + 2;
+    this.speed = Math.random() * 5 + 3;
+    this.alpha = 1.0;
+}
+
+// Firework Draw Function
+function drawFireworks() {
+    ctx.clearRect(0, 0, fireworksCanvas.width, fireworksCanvas.height);
+
+    fireworks.forEach((fw, i) => {
+        ctx.beginPath();
+        ctx.arc(fw.x, fw.y, fw.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(${fw.color}, ${fw.alpha})`;
+        ctx.fill();
+        fw.y -= fw.speed;
+        fw.alpha -= 0.02;
+        if (fw.alpha <= 0) fireworks.splice(i, 1);
+    });
+    requestAnimationFrame(drawFireworks);
+}
+
+// Fireworks button interactivity
+const fireworksButton = document.getElementById("fireworks-btn");
+
+fireworksButton.addEventListener("click", () => {
+    for (let i = 0; i < 20; i++) {
+        fireworks.push(new Firework(Math.random() * fireworksCanvas.width, fireworksCanvas.height));
+    }
+});
+
+// Start drawing the fireworks
+drawFireworks();
+
+// Fireworks Sound
+const fireworksSound = new Audio("fireworks.mp3"); // Replace with the actual path to your sound file
+
+// Fireworks button interactivity with sound
+fireworksButton.addEventListener("click", () => {
+    // Play the fireworks sound
+    fireworksSound.play();
+
+    for (let i = 0; i < 20; i++) {
+        fireworks.push(new Firework(Math.random() * fireworksCanvas.width, fireworksCanvas.height));
+    }
+});
+
+// Select the image and audio elements
+const playImage = document.getElementById("playImage");
+const song = document.getElementById("song");
+
+// Toggle play/pause on image click
+playImage.addEventListener("click", () => {
+    if (song.paused) {
+        song.play(); // Play the song
+        
+    } 
+});
+
+
+  </script>
+
+
+  <script src="script.js"></script>
+ 
+</body>
+</html>
